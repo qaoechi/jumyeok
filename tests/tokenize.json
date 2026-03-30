@@ -1,0 +1,54 @@
+[
+    {
+        "input": [
+            { "type": "HANGEUL", "value": "안a" }
+        ],
+        "output": [
+            {
+                "type": "HANGEUL",
+                "data": {
+                    "doensori": "false",
+                    "choseong": "ㅇ",
+                    "jungseong": "ㅏ",
+                    "jongseong": "ㄴ",
+                    "gyeopbatchim": ""
+                }
+            },
+            {
+                "type": "YEONGEO",
+                "data": "a"
+            }
+        ]
+    },
+    {
+        "input": [
+            { "type": "HANGEUL", "value": "점 자" }
+        ],
+        "output": [
+            {
+                "type": "HANGEUL",
+                "data": {
+                    "doensori": "false",
+                    "choseong": "ㅈ",
+                    "jungseong": "ㅓ",
+                    "jongseong": "ㅁ",
+                    "gyeopbatchim": ""
+                }
+            },
+            {
+                "type": "GONGBAEK",
+                "data": " "
+            },
+            {
+                "type": "HANGEUL",
+                "data": {
+                    "doensori": "false",
+                    "choseong": "ㅈ",
+                    "jungseong": "k",
+                    "jongseong": "",
+                    "gyeopbatchim": ""
+                }
+            }
+        ]
+    }
+]
