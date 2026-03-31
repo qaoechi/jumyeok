@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.junyeok.model.Geul;
+import com.junyeok.service.HanGeulBunHae;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,8 +12,11 @@ public class Main {
         input.add("asd");
         input.add("쀍");
 
-        for (Geul geul : createToken(input)) {
-            System.out.println(geul.render());
-        }
+        Geul asd = HanGeulBunHae.bunhae("가");
+        System.out.println(asd.render());
+        
+        // for (Geul geul : createToken(input)) {
+        //     System.out.println(geul.render());
+        // }
     }
 }
