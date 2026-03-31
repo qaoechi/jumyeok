@@ -4,15 +4,15 @@
             "type": "HANGEUL",
             "data": {
                 "doensori": "boolean",
-                "choseong": "string",
-                "jungseong": "string",
-                "jongseong": "string",
-                "gyeopbatchim": "string"
+                "choseong": "char",
+                "jungseong": "char",
+                "jongseong": "char",
+                "gyeopbatchim": "char"
             }
         },
         {
             "type": "NON-HANGEUL",
-            "data": "string"
+            "data": "char"
         }
     ]
 }

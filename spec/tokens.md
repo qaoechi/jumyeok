@@ -7,7 +7,7 @@
 1. 단일 문자 기반
 {
     type: SUTJA | YEONGEO | BUHO | GONGBAEK
-    data: string
+    data: char
 }
 
 2. 분해된 한글 기반
@@ -15,9 +15,9 @@
     type: HANGEUL
     data: {
         doensori: boolean
-        choseong: string
-        jungseong: string
-        jongseong: string
-        gyeopbatchim: string
+        choseong: char
+        jungseong: char
+        jongseong: char
+        gyeopbatchim: char
     }
 }
