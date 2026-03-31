@@ -14,7 +14,7 @@ public class HanGeul implements Geul {
 
     @Override
     public String render() {
-        return  doensori + " " + choseong + "" + jungseong + " " + jongseong + " " + gyeopbatchim;
+        return  doensori + "" + choseong + "" + jungseong + "" + jongseong + "" + gyeopbatchim;
     }
 
 }

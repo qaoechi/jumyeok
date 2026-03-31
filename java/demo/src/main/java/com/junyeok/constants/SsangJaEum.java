@@ -12,17 +12,11 @@ public enum SsangJaEum {
     ㅆ("ㅅ"),
     ㅉ("ㅈ");
 
-    private final String c;
+    private final String jaeum;
 
-    public static boolean exists(String c) {
+    public static SsangJaEum fromChar(String jaeum) {
         for (SsangJaEum s : values()) {
-            if (s.name().equals(c)) return true;
-        }
-        return false;
-    }
-    public static SsangJaEum fromChar(String c) {
-        for (SsangJaEum s : values()) {
-            if (s.name().equals(c)) return s;
+            if (s.name().equals(jaeum)) return s;
         }
         return null;
     }

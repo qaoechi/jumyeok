@@ -23,10 +23,10 @@ public enum GyeopBatChim {
     private final String first;
     private final String second;
 
-    public static boolean exists(String c) {
-        for (GyeopBatChim s : values()) {
-            if (s.name().equals(c)) return true;
+    public static GyeopBatChim fromChar(String batchim) {
+        for (GyeopBatChim g : values()) {
+            if (g.name().equals(batchim)) return g;
         }
-        return false;
+        return null;
     }
 }
