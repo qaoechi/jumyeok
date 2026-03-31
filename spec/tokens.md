@@ -6,8 +6,8 @@
 
 1. 단일 문자 기반
 {
-    type: HANGEUL | SUTJA | YEONGEO | BUHO | GONGBAEK
-    value: string
+    type: SUTJA | YEONGEO | BUHO | GONGBAEK
+    data: string
 }
 
 2. 분해된 한글 기반

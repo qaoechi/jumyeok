@@ -1,13 +1,18 @@
 {
-    "Token": {
-        "type": ["HANGEUL", "SUTJA", "YEONGEO", "BUHO", "GONGBAEK"],
-        "value": "string (Non-HANGEUL only)",
-        "data": {
-            "doensori": "boolean",
-            "choseong": "string",
-            "jungseong": "string",
-            "jongseong": "string",
-            "gyeopbatchim": "string"
+    "Token": [
+        {
+            "type": "HANGEUL",
+            "data": {
+                "doensori": "boolean",
+                "choseong": "string",
+                "jungseong": "string",
+                "jongseong": "string",
+                "gyeopbatchim": "string"
+            }
+        },
+        {
+            "type": "NON-HANGEUL",
+            "data": "string"
         }
-    }
+    ]
 }
