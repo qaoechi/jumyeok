@@ -1,8 +1,6 @@
 [
     {
-        "input": [
-            { "type": "HANGEUL", "value": "안a" }
-        ],
+        "input": [ "않", "a" ],
         "output": [
             {
                 "type": "HANGEUL",
@@ -11,7 +9,7 @@
                     "choseong": "ㅇ",
                     "jungseong": "ㅏ",
                     "jongseong": "ㄴ",
-                    "gyeopbatchim": ""
+                    "gyeopbatchim": "ㅎ"
                 }
             },
             {
@@ -21,34 +19,34 @@
         ]
     },
     {
-        "input": [
-            { "type": "HANGEUL", "value": "점 자" }
-        ],
+        "input": [ "쩜", " 1" ],
         "output": [
             {
                 "type": "HANGEUL",
                 "data": {
-                    "doensori": "false",
+                    "doensori": "true",
                     "choseong": "ㅈ",
                     "jungseong": "ㅓ",
                     "jongseong": "ㅁ",
                     "gyeopbatchim": ""
                 }
             },
-            {
-                "type": "GONGBAEK",
-                "data": " "
-            },
-            {
-                "type": "HANGEUL",
-                "data": {
-                    "doensori": "false",
-                    "choseong": "ㅈ",
-                    "jungseong": "k",
-                    "jongseong": "",
-                    "gyeopbatchim": ""
+            [
+                {
+                    "type": "GONGBAEK",
+                    "data": " "
+                },
+                {
+                    "type": "HANGEUL",
+                    "data": {
+                        "doensori": "false",
+                        "choseong": "ㅈ",
+                        "jungseong": "k",
+                        "jongseong": "",
+                        "gyeopbatchim": ""
+                    }
                 }
-            }
+            ]
         ]
     }
 ]
