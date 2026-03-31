@@ -1,5 +1,5 @@
-import { HanGeulBunHea } from "./core/tokenize.js";
+import { HanGeulBunHae } from "./core/HanGeulBunHae.js";
 
 const input = "껐";
 
-console.log(HanGeulBunHea(input));
+console.log(HanGeulBunHae(input));

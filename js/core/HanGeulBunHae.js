@@ -1,6 +1,6 @@
 import { HANGEUL_CHOSEONG, HANGEUL_JUNGSEONG, HANGEUL_JONGSEONG, SSANGJAEUM, GYEOPBATCHIM } from "../constant/hangeul/hangeul-mukja.js";
 
-export const HanGeulBunHea = (char) => {
+export const HanGeulBunHae = (char) => {
     const base = char.charCodeAt(0) - 0xAC00;
     if (base < 0 || base >= 0x2BA3) return null;
 
