@@ -4,21 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.junyeok.model.Geul;
-import com.junyeok.model.HanGeul;
-import com.junyeok.service.HanGeulBunHae;
+import com.junyeok.service.tokenize.GeulTypeResolver;
 
 public class Main {
     public static void main(String[] args) {
         List<String> input = new ArrayList<>();
-        input.add("asd");
+        input.add("as\nd");
         input.add("쀍");
+        input.add(" 강의실");
 
-        HanGeul asd = HanGeulBunHae.bunhae("쀍");
-        Geul qwe = HanGeulBunHae.splitGyeop(asd);
-        System.out.println(qwe.render());
         
-        // for (Geul geul : createToken(input)) {
-        //     System.out.println(geul.render());
-        // }
+        List<Geul> result = input.stream()
+            .flatMap(in -> in.chars().mapToObj(c -> (char) c))
+            .map(c -> GeulTypeResolver.resolve(c).create(c))
+            .toList();
+
+        result.stream()
+            .map(Geul::render)
+            .forEach(System.out::println);
     }
 }

@@ -6,10 +6,10 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class SutJa implements Geul {
-    private String su;
+    private char su;
 
     @Override
     public String render() {
-        return this.su;
+        return String.valueOf(su);
     }
 }

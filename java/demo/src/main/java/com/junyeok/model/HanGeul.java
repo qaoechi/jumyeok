@@ -6,11 +6,11 @@ import lombok.Getter;
 @Getter
 @Builder
 public class HanGeul implements Geul {
-    private final String doensori;
-    private final String choseong;
-    private final String jungseong;
-    private final String jongseong;
-    private final String gyeopbatchim;
+    private final char doensori;
+    private final char choseong;
+    private final char jungseong;
+    private final char jongseong;
+    private final char gyeopbatchim;
 
     @Override
     public String render() {

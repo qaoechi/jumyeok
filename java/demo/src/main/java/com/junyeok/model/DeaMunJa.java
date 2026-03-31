@@ -5,11 +5,11 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class YeongEo implements Geul {
-    private String c;
+public class DeaMunJa implements Geul {
+    private char c;
 
     @Override
     public String render() {
-        return this.c;
+        return String.valueOf(c);
     }
 }
