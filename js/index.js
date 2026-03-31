@@ -1,5 +1,6 @@
-import { HanGeulBunHae } from "./core/HanGeulBunHae.js";
+import { createToken } from "./core/tokenize.js";
 
-const input = "껐";
+const input = ["101 강의실", "B102-1 뿕"];
 
-console.log(HanGeulBunHae(input));
+const output = createToken(input);
+console.log(output);

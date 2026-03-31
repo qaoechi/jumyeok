@@ -12,7 +12,7 @@ export const hanGeulBunHae = (char) => {
     const jungseong = HANGEUL_JUNGSEONG[jung];
     const jongseong = HANGEUL_JONGSEONG[jong];
 
-    return result = decompose({choseong, jungseong, jongseong});
+    return decompose({choseong, jungseong, jongseong});
 }
 
 function decompose({choseong, jungseong, jongseong}) {
