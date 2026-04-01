@@ -16,7 +16,7 @@ public class HanGeulStrategy implements JunJaStrategy {
         StringBuilder result = new StringBuilder();
         HanGeul hanGeul = (HanGeul)geul;
         
-        if (hanGeul.getDoensori() != '\0') result.append(String.valueOf(DoenSoRi.쌍));
+        if (hanGeul.getDoensori() != '\0') result.append(String.valueOf(DoenSoRi.쌍.getDoen()));
         result.append(String.valueOf(ChoSeong.fromChar(hanGeul.getChoseong()).getChoseong()));
         result.append(String.valueOf(JungSeong.fromChar(hanGeul.getJungseong()).getJungseong()));
         if (hanGeul.getJongseong() != '\0') result.append(String.valueOf(JongSeong.fromChar(hanGeul.getJongseong()).getJongseong()));
