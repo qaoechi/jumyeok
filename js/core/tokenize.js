@@ -12,8 +12,8 @@ export const createToken = (list) =>
 function setType(char) {
     if (/[가-힣]/.test(char)) return TYPE.HANGEUL
     if (/[0-9]/.test(char)) return TYPE.SUTJA;
-    if (/[a-z]/.test(char)) return TYPE.SOMUNJASUTJA;
-    if (/[A-Z]/.test(char)) return TYPE.DEAMUNJASUTJA;
-    if (char == " " || char == "\n") return TYPE.GONGBAEKSUTJA;
+    if (/[a-z]/.test(char)) return TYPE.SOMUNJA;
+    if (/[A-Z]/.test(char)) return TYPE.DEAMUNJA;
+    if (char == " " || char == "\n") return TYPE.GONGBAEK;
     return TYPE.BUHO;
 }

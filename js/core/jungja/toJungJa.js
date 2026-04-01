@@ -9,18 +9,18 @@ export const jungja = (geul) => {
             geul.data = hangeulJungja(geul.data);
             return geul
         case "SUTJA":
-            geul.data.vaule = JUMJA_SUTJA[geul.data.value] ?? '';
+            geul.data.value = JUMJA_SUTJA[geul.data.value] ?? '';
             return geul;
-        case "GONGBEAK":
+        case "GONGBAEK":
             return geul;
         case "SOMUNJA":
-            geul.data.vaule = JUMJA_YEONGEO[geul.data.value] ?? '';
+            geul.data.value = JUMJA_YEONGEO[geul.data.value] ?? '';
             return geul;
         case "DEAMUNJA":
-            geul.data.vaule = JUMJA_YEONGEO[geul.data.value.toLowerCase()] ?? '';
+            geul.data.value = JUMJA_YEONGEO[geul.data.value.toLowerCase()] ?? '';
             return geul;
         default:
-            geul.data.vaule = JUMJA_BUHO[geul.data.value] ?? '';
+            geul.data.value = JUMJA_BUHO[geul.data.value] ?? '';
             return geul;
     }
 }
@@ -29,8 +29,8 @@ const hangeulJungja = (hangeul) => {
     return {
         doensori: hangeul.doensori ? DOENSORI : '',
         choseong: JUMJA_CHOSEONG[hangeul.choseong],
-        choseong: JUMJA_JUNGSEONG[hangeul.jungseong],
-        choseong: JUMJA_JONGSEONG[hangeul.jongseong],
+        jungseong: JUMJA_JUNGSEONG[hangeul.jungseong],
+        jongseong: JUMJA_JONGSEONG[hangeul.jongseong],
         gyeopbatchim: JUMJA_JONGSEONG[hangeul.gyeopbatchim]
     }
 }
