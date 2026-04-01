@@ -24,14 +24,14 @@ import com.junyeok.service.jungja.BuHoStrategy;
 import com.junyeok.service.jungja.DeaMunJaStrategy;
 import com.junyeok.service.jungja.GongBaekStrategy;
 import com.junyeok.service.jungja.HanGeulStrategy;
-import com.junyeok.service.jungja.JunJaStrategy;
+import com.junyeok.service.jungja.JungJaStrategy;
 import com.junyeok.service.jungja.SoMunJaStrategy;
 import com.junyeok.service.jungja.SutJaStrategy;
 import com.junyeok.service.tokenize.GeulTypeResolver;
 
 public class Main {
     public static void main(String[] args) {
-        Map<Class<? extends Geul>, JunJaStrategy> startegies = Map.of(
+        Map<Class<? extends Geul>, JungJaStrategy> startegies = Map.of(
             HanGeul.class, new HanGeulStrategy(),
             SutJa.class, new SutJaStrategy(),
             GongBaek.class, new GongBaekStrategy(),

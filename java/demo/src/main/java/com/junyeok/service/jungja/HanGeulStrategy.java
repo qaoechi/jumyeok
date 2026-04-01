@@ -9,7 +9,7 @@ import com.junyeok.model.HanGeul;
 import com.junyeok.model.braille.BrailleToken;
 import com.junyeok.model.braille.TokenType;
 
-public class HanGeulStrategy implements JunJaStrategy {
+public class HanGeulStrategy implements JungJaStrategy {
 
     @Override
     public BrailleToken uncontracted(Geul geul) {

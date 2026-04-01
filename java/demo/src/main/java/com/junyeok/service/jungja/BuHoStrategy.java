@@ -5,7 +5,7 @@ import com.junyeok.model.Geul;
 import com.junyeok.model.braille.BrailleToken;
 import com.junyeok.model.braille.TokenType;
 
-public class BuHoStrategy implements JunJaStrategy {
+public class BuHoStrategy implements JungJaStrategy {
 
     @Override
     public BrailleToken uncontracted(Geul geul) {
