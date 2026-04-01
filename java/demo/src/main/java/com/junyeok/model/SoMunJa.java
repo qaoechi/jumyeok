@@ -2,9 +2,11 @@ package com.junyeok.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @Getter
+@ToString
 public class SoMunJa implements Geul {
     private char c;
 

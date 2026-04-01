@@ -19,8 +19,12 @@ public class Main {
             .map(c -> GeulTypeResolver.resolve(c).create(c))
             .toList();
 
+
+        // result.stream()
+        //     .map(Geul::render)
+        //     .forEach(System.out::println);
         result.stream()
-            .map(Geul::render)
+            .map(Geul::toString)
             .forEach(System.out::println);
     }
 }
