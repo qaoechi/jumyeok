@@ -1,0 +1,8 @@
+export const TYPE = {
+    HANGEUL: "HANGEUL",
+    SOMUNJA: "SOMUNJA",
+    DEAMUNJA: "DEAMUNJA",
+    SUTJA: "SUTJA",
+    BUHO: "BUHO",
+    GONGBAEK: "GONGBAEK"
+}

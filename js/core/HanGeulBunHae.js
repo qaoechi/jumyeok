@@ -1,4 +1,5 @@
-import { HANGEUL_CHOSEONG, HANGEUL_JUNGSEONG, HANGEUL_JONGSEONG, SSANGJAEUM, GYEOPBATCHIM } from "../constant/hangeul/hangeul-mukja.js";
+import { HANGEUL_CHOSEONG, HANGEUL_JUNGSEONG, HANGEUL_JONGSEONG, SSANGJAEUM, GYEOPBATCHIM } from "../constant/hangeul/hangeulMukja.js";
+import { TYPE } from "../constant/brailleType.js";
 
 export const hanGeulBunHae = (char) => {
     const base = char.charCodeAt(0) - 0xAC00;
@@ -28,10 +29,11 @@ function decompose({choseong, jungseong, jongseong}) {
     }
 
     return {
-            doensori,
-            choseong: cho,
-            jungseong,
-            jongseong: jongseong,
-            gyeopbatchim
+        type: TYPE.HANGEUL,
+        doensori,
+        choseong: cho,
+        jungseong,
+        jongseong: jongseong,
+        gyeopbatchim
     }
 }
