@@ -8,7 +8,7 @@ import lombok.Getter;
 public class HanGeul implements Geul {
     private final char doensori;
     private final char choseong;
-    private final char jungseong;
+    private final String jungseong;
     private final char jongseong;
     private final char gyeopbatchim;
 
