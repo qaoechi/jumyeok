@@ -35,6 +35,7 @@ public class Main {
                 return jungja.get(0).uncontracted(geul);
             })
             .map(BrailleToken::toString)
+            .map(s -> s.replace("\0", ""))
             .collect(Collectors.joining());
             
         try (Writer writer = new BufferedWriter(

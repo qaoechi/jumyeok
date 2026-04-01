@@ -16,11 +16,11 @@ public class HanGeulStrategy implements JunJaStrategy {
         StringBuilder result = new StringBuilder();
         HanGeul hanGeul = (HanGeul)geul;
         
-        if (hanGeul.getDoensori() != '\0') result.append(String.valueOf(DoenSoRi.쌍.getDoen()));
-        result.append(String.valueOf(ChoSeong.fromChar(hanGeul.getChoseong()).getChoseong()));
-        result.append(String.valueOf(JungSeong.fromChar(hanGeul.getJungseong()).getJungseong()));
-        if (hanGeul.getJongseong() != '\0') result.append(String.valueOf(JongSeong.fromChar(hanGeul.getJongseong()).getJongseong()));
-        if (hanGeul.getGyeopbatchim() != '\0') result.append(String.valueOf(JongSeong.fromChar(hanGeul.getGyeopbatchim()).getJongseong()));
+        if (hanGeul.getDoensori() != '\0') result.append(DoenSoRi.쌍.getDoen());
+        result.append(ChoSeong.fromChar(hanGeul.getChoseong()).getChoseong());
+        result.append(JungSeong.fromChar(hanGeul.getJungseong()).getJungseong());
+        if (hanGeul.getJongseong() != '\0') result.append(JongSeong.fromChar(hanGeul.getJongseong()).getJongseong());
+        if (hanGeul.getGyeopbatchim() != '\0') result.append(JongSeong.fromChar(hanGeul.getGyeopbatchim()).getJongseong());
         
         return new BrailleToken(result.toString(), TokenType.HANGEUL, geul);
     }
