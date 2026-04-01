@@ -40,7 +40,7 @@ public enum SoMunJa {
     private final char braille;
     private static final Map<Character, SoMunJa> alphabet =
         Arrays.stream(values())
-            .collect((Collectors.toMap(s -> s.braille, s -> s)));
+            .collect((Collectors.toMap(s -> s.name().charAt(0), s -> s)));
 
     public static SoMunJa fromChar(char a) {
         return alphabet.get(a);

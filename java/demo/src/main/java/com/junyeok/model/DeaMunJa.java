@@ -15,7 +15,7 @@ public class DeaMunJa implements Geul {
         return String.valueOf(c);
     }
 
-        @Override
+    @Override
     public char getChar() {
         return this.c;
     }

@@ -9,20 +9,30 @@ import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.junyeok.model.DeaMunJa;
 import com.junyeok.model.Geul;
+import com.junyeok.model.HanGeul;
+import com.junyeok.model.SoMunJa;
 import com.junyeok.model.braille.BrailleToken;
+import com.junyeok.service.jungja.DeaMunJaStrategy;
 import com.junyeok.service.jungja.HanGeulStrategy;
 import com.junyeok.service.jungja.JunJaStrategy;
+import com.junyeok.service.jungja.SoMunJaStrategy;
 import com.junyeok.service.tokenize.GeulTypeResolver;
 
 public class Main {
     public static void main(String[] args) {
-        List<JunJaStrategy> jungja = List.of(new HanGeulStrategy());
+        Map<Class<? extends Geul>, JunJaStrategy> startegies = Map.of(
+            HanGeul.class, new HanGeulStrategy(),
+            SoMunJa.class, new SoMunJaStrategy(),
+            DeaMunJa.class, new DeaMunJaStrategy()
+        );
         List<String> input = new ArrayList<>();
         // input.add("as\nd");
-        input.add("쀍");
+        input.add("쀍abZ");
         input.add("강의실");
         
         List<Geul> result = input.stream()
@@ -32,7 +42,7 @@ public class Main {
 
         String output = result.stream()
             .map(geul -> {
-                return jungja.get(0).uncontracted(geul);
+                return startegies.get(geul.getClass()).uncontracted(geul);
             })
             .map(BrailleToken::toString)
             .map(s -> s.replace("\0", ""))
