@@ -1,4 +1,4 @@
-package com.junyeok.constants;
+package com.junyeok.constants.hangeul;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -27,6 +27,7 @@ public enum GyeopBatChim {
     private final char origin;
     private final char first;
     private final char second;
+    
     private static final Map<Character, GyeopBatChim> GYEOP_MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.origin, s -> s)));

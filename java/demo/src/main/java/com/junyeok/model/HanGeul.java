@@ -2,9 +2,11 @@ package com.junyeok.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @Builder
+@ToString
 public class HanGeul implements Geul {
     private final char doensori;
     private final char choseong;
@@ -16,5 +18,8 @@ public class HanGeul implements Geul {
     public String render() {
         return  doensori + "" + choseong + "" + jungseong + "" + jongseong + "" + gyeopbatchim;
     }
-
+    @Override
+    public char getChar() {
+        return '\0';
+    }
 }

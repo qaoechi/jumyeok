@@ -1,8 +1,8 @@
 package com.junyeok.service.tokenize;
 
-import com.junyeok.constants.GyeopBatChim;
-import com.junyeok.constants.HanGeulMukJa;
-import com.junyeok.constants.SsangJaEum;
+import com.junyeok.constants.hangeul.GyeopBatChim;
+import com.junyeok.constants.hangeul.HanGeulMukJa;
+import com.junyeok.constants.hangeul.SsangJaEum;
 import com.junyeok.model.Geul;
 import com.junyeok.model.HanGeul;
 

@@ -1,4 +1,4 @@
-package com.junyeok.constants;
+package com.junyeok.constants.hangeul;
 
 import java.util.Arrays;
 import java.util.Map;
