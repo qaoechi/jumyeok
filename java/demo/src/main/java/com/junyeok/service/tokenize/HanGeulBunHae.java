@@ -15,7 +15,7 @@ public class HanGeulBunHae {
         int jong = base % 28;
 
         char choseong = HanGeulMukJa.HANGEUL_CHOSEONG[cho];
-        String jungseong = HanGeulMukJa.HANGEUL_JUNGSEONG[jung];
+        char jungseong = HanGeulMukJa.HANGEUL_JUNGSEONG[jung];
         char jongseong = HanGeulMukJa.HANGEUL_JONGSEONG[jong];
 
         return HanGeul.builder()
@@ -28,7 +28,7 @@ public class HanGeulBunHae {
         char doensori = '\0';
         char choseong = hangeul.getChoseong();
         char jongseong = hangeul.getJongseong();
-        String jungseong = hangeul.getJungseong();
+        char jungseong = hangeul.getJungseong();
         char gyeop = '\0';
 
         SsangJaEum jaeum = SsangJaEum.fromChar(choseong);
