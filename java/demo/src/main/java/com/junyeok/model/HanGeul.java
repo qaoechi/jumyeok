@@ -18,5 +18,8 @@ public class HanGeul implements Geul {
     public String render() {
         return  doensori + "" + choseong + "" + jungseong + "" + jongseong + "" + gyeopbatchim;
     }
-
+    @Override
+    public char getChar() {
+        return '\0';
+    }
 }

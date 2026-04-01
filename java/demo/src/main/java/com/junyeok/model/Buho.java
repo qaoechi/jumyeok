@@ -14,4 +14,9 @@ public class Buho implements Geul {
     public String render() {
         return String.valueOf(munja);
     }
+
+    @Override
+    public char getChar() {
+        return this.munja;
+    }
 }

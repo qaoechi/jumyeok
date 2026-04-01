@@ -8,6 +8,6 @@ public class YeongEoStrategy implements JunJaStrategy {
 
     @Override
     public BrailleToken uncontracted(Geul geul) {
-        return SoMunJa.fromChar(geul.getData());
+        SoMunJa.fromChar(geul.getChar());
     }
 }

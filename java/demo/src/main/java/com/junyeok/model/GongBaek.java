@@ -14,4 +14,9 @@ public class GongBaek implements Geul {
     public String render() {
         return String.valueOf(bin);
     }
+
+    @Override
+    public char getChar() {
+        return this.bin;
+    }
 }

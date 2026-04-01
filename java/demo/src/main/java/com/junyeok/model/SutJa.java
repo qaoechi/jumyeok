@@ -14,4 +14,9 @@ public class SutJa implements Geul {
     public String render() {
         return String.valueOf(su);
     }
+
+    @Override
+    public char getChar() {
+        return this.su;
+    }
 }

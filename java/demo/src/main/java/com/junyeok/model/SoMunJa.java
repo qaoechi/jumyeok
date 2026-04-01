@@ -14,4 +14,9 @@ public class SoMunJa implements Geul {
     public String render() {
         return String.valueOf(c);
     }
+
+    @Override
+    public char getChar() {
+        return this.c;
+    }
 }
