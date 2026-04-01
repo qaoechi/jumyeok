@@ -1,6 +1,7 @@
 export const TYPE = {
     HANGEUL: "HANGEUL",
-    YEONGEO: "YEONGEO",
+    SOMUNJA: "SOMUNJA",
+    DEAMUNJA: "DEAMUNJA",
     SUTJA: "SUTJA",
     BUHO: "BUHO",
     GONGBAEK: "GONGBAEK"
