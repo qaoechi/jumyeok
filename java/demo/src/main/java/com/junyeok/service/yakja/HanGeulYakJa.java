@@ -1,8 +1,10 @@
 package com.junyeok.service.yakja;
 
+import com.junyeok.constants.hangeulJumja.ChoSeong;
 import com.junyeok.constants.hangeulJumja.DoenSoRi;
 import com.junyeok.constants.hangeulJumja.JongSeong;
 import com.junyeok.constants.yakja.ASaengLyak;
+import com.junyeok.constants.yakja.BatChimSaengLyak;
 import com.junyeok.constants.yakja.SsangSiOt;
 import com.junyeok.model.HanGeul;
 import com.junyeok.model.braille.BrailleToken;
@@ -26,6 +28,14 @@ public class HanGeulYakJa {
                 return new BrailleToken(result.toString(), geul.getType(), hangeul);
             }
             return geul;
+        }
+        if (BatChimSaengLyak.fromChar(hangeul.getJungseong() + "" + hangeul.getJongseong()) != null) {
+            StringBuilder result = new StringBuilder();
+            if (hangeul.getDoensori() != '\0') result.append(DoenSoRi.쌍.getDoen());
+            result.append(ChoSeong.fromChar(hangeul.getChoseong()).getChoseong());
+            result.append(BatChimSaengLyak.fromChar(hangeul.getJungseong() + "" + hangeul.getJongseong()).getBatChimSaengLyak());
+            if (hangeul.getGyeopbatchim() != '\0') result.append(JongSeong.fromChar(hangeul.getGyeopbatchim()).getJongseong());
+            return new BrailleToken(result.toString(), geul.getType(), hangeul);
         }
         return geul;
     }

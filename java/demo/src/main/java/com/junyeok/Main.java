@@ -44,7 +44,8 @@ public class Main {
         HanGeulYakJa yakJa = new HanGeulYakJa();
 
         List<String> input = new ArrayList<>();
-        input.add("았갔");
+        input.add("가나다라마바사아자차카타파하");
+        input.add("겳");
         // input.add("아아-1\n2");
         // input.add("쀍 abZ");
         // input.add("강\n의실");
