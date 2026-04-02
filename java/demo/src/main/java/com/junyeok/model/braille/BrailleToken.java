@@ -11,6 +11,7 @@ public class BrailleToken {
     private String dots;
     private TokenType type;
     private Geul origin;
+    private boolean isAbbreviation;
 
     @Override
     public String toString() {

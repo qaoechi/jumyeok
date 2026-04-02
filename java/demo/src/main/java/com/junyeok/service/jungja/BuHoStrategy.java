@@ -12,6 +12,7 @@ public class BuHoStrategy implements JungJaStrategy {
         return new BrailleToken(
             BuHo.fromChar(geul.getChar()).getBraille(),
             TokenType.BUHO,
-            geul);
+            geul,
+            false);
     }
 }

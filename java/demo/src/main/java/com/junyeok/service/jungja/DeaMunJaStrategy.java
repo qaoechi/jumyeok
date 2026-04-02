@@ -12,6 +12,7 @@ public class DeaMunJaStrategy implements JungJaStrategy {
         return new BrailleToken(
             String.valueOf(SoMunJa.fromChar(Character.toLowerCase(geul.getChar())).getBraille()),
             TokenType.SOMUNJA,
-            geul);
+            geul,
+            false);
     }
 }

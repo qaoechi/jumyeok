@@ -12,6 +12,7 @@ public class SutJaStrategy implements JungJaStrategy {
         return new BrailleToken(
             String.valueOf(SutJa.fromChar(geul.getChar()).getBraille()),
             TokenType.SUTJA,
-            geul);
+            geul,
+            false);
     }
 }

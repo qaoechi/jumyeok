@@ -11,6 +11,7 @@ public class GongBaekStrategy implements JungJaStrategy {
         return new BrailleToken(
             String.valueOf(geul.getChar()),
             TokenType.GONGBAEK,
-            geul);
+            geul,
+            false);
     }
 }

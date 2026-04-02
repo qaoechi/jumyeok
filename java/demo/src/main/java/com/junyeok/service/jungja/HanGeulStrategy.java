@@ -22,6 +22,6 @@ public class HanGeulStrategy implements JungJaStrategy {
         if (hanGeul.getJongseong() != '\0') result.append(JongSeong.fromChar(hanGeul.getJongseong()).getJongseong());
         if (hanGeul.getGyeopbatchim() != '\0') result.append(JongSeong.fromChar(hanGeul.getGyeopbatchim()).getJongseong());
         
-        return new BrailleToken(result.toString(), TokenType.HANGEUL, geul);
+        return new BrailleToken(result.toString(), TokenType.HANGEUL, geul, false);
     }
 }
