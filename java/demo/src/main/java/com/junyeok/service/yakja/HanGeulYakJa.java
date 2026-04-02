@@ -17,9 +17,9 @@ public class HanGeulYakJa {
         HanGeulContext context = new HanGeulContext(hangeul);
 
         applySsangSiOt(context);
-        applyASaengLyak(context);
-        applyBatChimSaengLyak(context);
-        applyGeot(context);
+        if (!context.is) applyASaengLyak(context);
+        if (!context.is) applyBatChimSaengLyak(context);
+        if (!context.is) applyGeot(context);
 
         StringBuilder result = new StringBuilder();
         result.append(hangeul.getDoensori() != '\0' ? DoenSoRi.쌍.getDoen() : hangeul.getDoensori())
@@ -35,7 +35,6 @@ public class HanGeulYakJa {
         if (context.gyeopbatchim == 'ㅅ' && context.jongseong == 'ㅅ') {
             context.jongseong = SsangSiOt.ㅆ.getSs();
             context.gyeopbatchim = '\0';
-            context.is = true;
         }
     }
     private static void applyASaengLyak(HanGeulContext context) {
