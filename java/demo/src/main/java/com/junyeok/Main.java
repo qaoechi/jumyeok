@@ -41,14 +41,13 @@ public class Main {
             DeaMunJa.class, new DeaMunJaStrategy(),
             Buho.class, new BuHoStrategy()
         );
-        HanGeulYakJa yakJa = new HanGeulYakJa();
 
         List<String> input = new ArrayList<>();
-        input.add("가나다라마바사아자차카타파하");
-        input.add("겳");
-        // input.add("아아-1\n2");
-        // input.add("쀍 abZ");
-        // input.add("강\n의실");
+        input.add("아 그 냥 쫌 빍 쮋\n");
+        input.add("가 나 라 사 방 까 싺\n");
+        input.add("았 갔 쩠\n");
+        input.add("엷 옥 늘 쑬\n");
+        input.add("아아-1\n2");
         
         List<Geul> result = input.stream()
             .flatMap(in -> in.chars().mapToObj(c -> (char) c))
@@ -60,7 +59,7 @@ public class Main {
                 return startegies.get(geul.getClass()).uncontracted(geul);
             })
             .map(geul -> {
-                if (geul.getType() == TokenType.HANGEUL) return yakJa.contraction(geul); 
+                if (geul.getType() == TokenType.HANGEUL) return HanGeulYakJa.contraction(geul); 
                 return geul;
             })
             .map(BrailleToken::toString)

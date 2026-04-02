@@ -1,42 +1,69 @@
 package com.junyeok.service.yakja;
 
-import com.junyeok.constants.hangeulJumja.ChoSeong;
 import com.junyeok.constants.hangeulJumja.DoenSoRi;
-import com.junyeok.constants.hangeulJumja.JongSeong;
 import com.junyeok.constants.yakja.ASaengLyak;
 import com.junyeok.constants.yakja.BatChimSaengLyak;
+import com.junyeok.constants.yakja.Geot;
 import com.junyeok.constants.yakja.SsangSiOt;
 import com.junyeok.model.HanGeul;
 import com.junyeok.model.braille.BrailleToken;
+import com.junyeok.utils.transcriptor.ChoseongTranscription;
+import com.junyeok.utils.transcriptor.JongseongTranscription;
+import com.junyeok.utils.transcriptor.JungseongTranscription;
 
 public class HanGeulYakJa {
-    public BrailleToken contraction(BrailleToken geul) {
+    public static BrailleToken contraction(BrailleToken geul) {
         HanGeul hangeul = (HanGeul) geul.getOrigin();
-        String dots = geul.getDots();
+        HanGeulContext context = new HanGeulContext(hangeul);
 
-        if (hangeul.getJongseong() == 'ㅅ' && hangeul.getGyeopbatchim() == 'ㅅ') {
-            dots = dots.substring(0, dots.length() -2) +  SsangSiOt.ㅆ.getSs();
-            return new BrailleToken(dots, geul.getType(), hangeul);
+        applySsangSiOt(context);
+        applyASaengLyak(context);
+        applyBatChimSaengLyak(context);
+        applyGeot(context);
+
+        StringBuilder result = new StringBuilder();
+        result.append(hangeul.getDoensori() != '\0' ? DoenSoRi.쌍.getDoen() : hangeul.getDoensori())
+            .append(ChoseongTranscription.getChoseongBraille(context.choseong))
+            .append(JungseongTranscription.getJungseongBraille(context.jungseong.charAt(0)))
+            .append(JongseongTranscription.getJongseongBraille(context.jongseong))
+            .append(JongseongTranscription.getJongseongBraille(context.gyeopbatchim));
+
+        return new BrailleToken(result.toString(), geul.getType(), hangeul, context.is);
+    }
+
+    private static void applySsangSiOt(HanGeulContext context) {
+        if (context.gyeopbatchim == 'ㅅ' && context.jongseong == 'ㅅ') {
+            context.jongseong = SsangSiOt.ㅆ.getSs();
+            context.gyeopbatchim = '\0';
+            context.is = true;
         }
-        if (hangeul.getJungseong() == 'ㅏ') {
-            StringBuilder result = new StringBuilder();
-            if (ASaengLyak.fromChar(hangeul.getChoseong()) != null) {
-                if (hangeul.getDoensori() != '\0') result.append(DoenSoRi.쌍.getDoen());
-                result.append(ASaengLyak.fromChar(hangeul.getChoseong()).getASaengLyak());
-                if (hangeul.getJongseong() != '\0') result.append(JongSeong.fromChar(hangeul.getJongseong()).getJongseong());
-                if (hangeul.getGyeopbatchim() != '\0') result.append(JongSeong.fromChar(hangeul.getGyeopbatchim()).getJongseong());
-                return new BrailleToken(result.toString(), geul.getType(), hangeul);
+    }
+    private static void applyASaengLyak(HanGeulContext context) {
+        if (context.jungseong.equals("ㅏ")) {
+            ASaengLyak cho = ASaengLyak.fromChar(context.choseong);
+            if (cho != null) {
+                context.choseong = cho.getASaengLyak();
+                context.jungseong = "a";
+                context.is = true;
             }
-            return geul;
         }
-        if (BatChimSaengLyak.fromChar(hangeul.getJungseong() + "" + hangeul.getJongseong()) != null) {
-            StringBuilder result = new StringBuilder();
-            if (hangeul.getDoensori() != '\0') result.append(DoenSoRi.쌍.getDoen());
-            result.append(ChoSeong.fromChar(hangeul.getChoseong()).getChoseong());
-            result.append(BatChimSaengLyak.fromChar(hangeul.getJungseong() + "" + hangeul.getJongseong()).getBatChimSaengLyak());
-            if (hangeul.getGyeopbatchim() != '\0') result.append(JongSeong.fromChar(hangeul.getGyeopbatchim()).getJongseong());
-            return new BrailleToken(result.toString(), geul.getType(), hangeul);
+    }
+    private static void applyBatChimSaengLyak(HanGeulContext context) {
+        BatChimSaengLyak batchim = BatChimSaengLyak.fromChar(context.jungseong + "" + context.jongseong);
+        if (batchim != null) {
+            context.jungseong = "a";
+            context.jongseong = batchim.getBatChimSaengLyak();
+            context.is = true;
         }
-        return geul;
+    }
+    private static void applyGeot(HanGeulContext context) {
+        if (context.choseong == 'ㄱ' && context.jungseong.equals("ㅓ") && context.jongseong == 'ㅅ') {
+            if (context.gyeopbatchim == '\0') {
+                context.choseong = '\0';
+                context.jungseong = Geot.것.getThing();
+                context.jongseong = '\0';
+                context.is = true;
+            }
+        }
     }
 }
