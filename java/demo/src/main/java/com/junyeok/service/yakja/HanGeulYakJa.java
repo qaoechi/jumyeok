@@ -3,6 +3,7 @@ package com.junyeok.service.yakja;
 import com.junyeok.constants.hangeulJumja.DoenSoRi;
 import com.junyeok.constants.yakja.ASaengLyak;
 import com.junyeok.constants.yakja.BatChimSaengLyak;
+import com.junyeok.constants.yakja.Eong;
 import com.junyeok.constants.yakja.Geot;
 import com.junyeok.constants.yakja.SsangSiOt;
 import com.junyeok.model.HanGeul;
@@ -19,6 +20,7 @@ public class HanGeulYakJa {
         applySsangSiOt(context);
         if (!context.is) applyASaengLyak(context);
         if (!context.is) applyBatChimSaengLyak(context);
+        if (!context.is) applyEong(context);
         if (!context.is) applyGeot(context);
 
         StringBuilder result = new StringBuilder();
@@ -53,6 +55,16 @@ public class HanGeulYakJa {
             context.jungseong = "a";
             context.jongseong = batchim.getBatChimSaengLyak();
             context.is = true;
+        }
+    }
+    private static void applyEong(HanGeulContext context) {
+        if ((context.jungseong + context.jongseong).equals("ㅓㅇ")) {
+            Eong eong = Eong.fromChar(context.choseong);
+            if (eong != null) {
+                context.jungseong = "a";
+                context.jongseong = BatChimSaengLyak.영.getBatChimSaengLyak();
+            }
+
         }
     }
     private static void applyGeot(HanGeulContext context) {

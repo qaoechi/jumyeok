@@ -47,7 +47,8 @@ public class Main {
         input.add("가 나 라 사 방 까 싺\n");
         input.add("았 갔 쩠\n");
         input.add("엷 옥 늘 쑬\n");
-        input.add("아아-1\n2");
+        input.add("영엉 성정쩡청썽 경겅");
+        // input.add("아아-1\n2");
         
         List<Geul> result = input.stream()
             .flatMap(in -> in.chars().mapToObj(c -> (char) c))
