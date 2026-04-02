@@ -20,6 +20,7 @@ import com.junyeok.model.HanGeul;
 import com.junyeok.model.SoMunJa;
 import com.junyeok.model.SutJa;
 import com.junyeok.model.braille.BrailleToken;
+import com.junyeok.model.braille.TokenType;
 import com.junyeok.service.jungja.BuHoStrategy;
 import com.junyeok.service.jungja.DeaMunJaStrategy;
 import com.junyeok.service.jungja.GongBaekStrategy;
@@ -28,6 +29,7 @@ import com.junyeok.service.jungja.JungJaStrategy;
 import com.junyeok.service.jungja.SoMunJaStrategy;
 import com.junyeok.service.jungja.SutJaStrategy;
 import com.junyeok.service.tokenize.GeulTypeResolver;
+import com.junyeok.service.yakja.HanGeulYakJa;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,10 +41,13 @@ public class Main {
             DeaMunJa.class, new DeaMunJaStrategy(),
             Buho.class, new BuHoStrategy()
         );
+        HanGeulYakJa yakJa = new HanGeulYakJa();
+
         List<String> input = new ArrayList<>();
-        input.add("-1\n2");
-        input.add("쀍 abZ");
-        input.add("강\n의실");
+        input.add("았갔");
+        // input.add("아아-1\n2");
+        // input.add("쀍 abZ");
+        // input.add("강\n의실");
         
         List<Geul> result = input.stream()
             .flatMap(in -> in.chars().mapToObj(c -> (char) c))
@@ -52,6 +57,10 @@ public class Main {
         String output = result.stream()
             .map(geul -> {
                 return startegies.get(geul.getClass()).uncontracted(geul);
+            })
+            .map(geul -> {
+                if (geul.getType() == TokenType.HANGEUL) return yakJa.contraction(geul); 
+                return geul;
             })
             .map(BrailleToken::toString)
             .map(s -> s.replace("\0", ""))
