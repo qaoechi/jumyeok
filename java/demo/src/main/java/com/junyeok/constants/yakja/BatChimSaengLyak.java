@@ -26,7 +26,7 @@ public enum BatChimSaengLyak {
     인("ㅣㄴ", '⠟');
 
     private final String key;
-    private final char aSaengLyak;
+    private final char batChimSaengLyak;
     private static final Map<String, BatChimSaengLyak> BATCHIMSAENGLYAK_MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.key, s -> s)));
