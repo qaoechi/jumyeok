@@ -1,4 +1,4 @@
-package com.junyeok.model;
+package com.junyeok.model.mukja;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,6 @@ import lombok.ToString;
 @ToString
 public class Buho implements Geul {
     private char munja;
-
-    @Override
-    public String render() {
-        return String.valueOf(munja);
-    }
 
     @Override
     public char getChar() {

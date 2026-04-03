@@ -1,6 +1,6 @@
-package com.junyeok.service.yakja;
+package com.junyeok.model.braille;
 
-import com.junyeok.model.HanGeul;
+import com.junyeok.model.mukja.Hangeul;
 
 class HanGeulContext {
     char choseong;
@@ -9,7 +9,7 @@ class HanGeulContext {
     char gyeopbatchim;
     boolean is;
     
-    HanGeulContext(HanGeul h) {
+    HanGeulContext(Hangeul h) {
         this.choseong = h.getChoseong();
         this.jungseong = h.getJungseong() + "";
         this.jongseong = h.getJongseong();

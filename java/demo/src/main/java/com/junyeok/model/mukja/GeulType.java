@@ -1,17 +1,17 @@
-package com.junyeok.model;
+package com.junyeok.model.mukja;
 
 import java.util.function.Function;
 
-import com.junyeok.service.tokenize.HanGeulBunHae;
-
 import lombok.AllArgsConstructor;
+
+import com.junyeok.service.tokenize.HanGeulBunHae;
 
 @AllArgsConstructor
 public enum GeulType {
     HANGEUL(c -> HanGeulBunHae.splitGyeop(HanGeulBunHae.bunhae(c))),
-    SOMUNJA(c -> new SoMunJa(c)),
-    DEAMUNJA(c -> new DeaMunJa(c)),
-    SutJa(c -> new SutJa(c)),
+    SOMUNJA(c -> new SoMunja(c)),
+    DEAMUNJA(c -> new DeaMunja(c)),
+    SUTJA(c -> new Sutja(c)),
     Buho(c -> new Buho(c)),
     GONGBAEK(c -> new GongBaek(c));
 

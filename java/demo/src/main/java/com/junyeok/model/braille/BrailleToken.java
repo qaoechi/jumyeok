@@ -1,6 +1,6 @@
 package com.junyeok.model.braille;
 
-import com.junyeok.model.Geul;
+import com.junyeok.model.mukja.Geul;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
