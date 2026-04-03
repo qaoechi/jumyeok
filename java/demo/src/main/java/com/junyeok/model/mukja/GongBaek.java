@@ -7,7 +7,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @ToString
-public class GongBaek implements Geul {
+public class Gongbaek implements Geul {
     private char bin;
 
     @Override

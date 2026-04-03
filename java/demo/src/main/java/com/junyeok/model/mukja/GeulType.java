@@ -13,7 +13,7 @@ public enum GeulType {
     DEAMUNJA(c -> new DeaMunja(c)),
     SUTJA(c -> new Sutja(c)),
     Buho(c -> new Buho(c)),
-    GONGBAEK(c -> new GongBaek(c));
+    GONGBAEK(c -> new Gongbaek(c));
 
     private final Function<Character, Geul> creator;
 
