@@ -10,35 +10,35 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum Jungseong {
-    ㅏ('ㅏ', "⠣"),
-    ㅐ('ㅐ', "⠗"),
-    ㅑ('ㅑ', "⠜"),
-    ㅒ('ㅒ', "⠜⠗"),
-    ㅓ('ㅓ', "⠎"),
-    ㅔ('ㅔ', "⠝"),
-    ㅕ('ㅕ', "⠱"),
-    ㅖ('ㅖ', "⠌"),
-    ㅗ('ㅗ', "⠥"),
-    ㅘ('ㅘ', "⠧"),
-    ㅙ('ㅙ', "⠧⠗"),
-    ㅚ('ㅚ', "⠽"),
-    ㅛ('ㅛ', "⠬"),
-    ㅜ('ㅜ', "⠍"),
-    ㅝ('ㅝ', "⠏"),
-    ㅞ('ㅞ', "⠏⠗"),
-    ㅟ('ㅟ', "⠍⠗"),
-    ㅠ('ㅠ', "⠩"),
-    ㅡ('ㅡ', "⠪"),
-    ㅢ('ㅢ', "⠺"),
-    ㅣ('ㅣ', "⠕");
+    ㅏ("ㅏ", "⠣"),
+    ㅐ("ㅐ", "⠗"),
+    ㅑ("ㅑ", "⠜"),
+    ㅒ("ㅒ", "⠜⠗"),
+    ㅓ("ㅓ", "⠎"),
+    ㅔ("ㅔ", "⠝"),
+    ㅕ("ㅕ", "⠱"),
+    ㅖ("ㅖ", "⠌"),
+    ㅗ("ㅗ", "⠥"),
+    ㅘ("ㅘ", "⠧"),
+    ㅙ("ㅙ", "⠧⠗"),
+    ㅚ("ㅚ", "⠽"),
+    ㅛ("ㅛ", "⠬"),
+    ㅜ("ㅜ", "⠍"),
+    ㅝ("ㅝ", "⠏"),
+    ㅞ("ㅞ", "⠏⠗"),
+    ㅟ("ㅟ", "⠍⠗"),
+    ㅠ("ㅠ", "⠩"),
+    ㅡ("ㅡ", "⠪"),
+    ㅢ("ㅢ", "⠺"),
+    ㅣ("ㅣ", "⠕");
 
-    private final char origin;
+    private final String origin;
     private final String braille;
-    private static final Map<Character, Jungseong> MAP =
+    private static final Map<String, Jungseong> MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.origin, s -> s)));
 
-    public static Jungseong fromChar(char jungseong) {
+    public static Jungseong fromChar(String jungseong) {
         return MAP.get(jungseong);
     }
 }

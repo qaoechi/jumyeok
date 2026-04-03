@@ -10,7 +10,7 @@ public class SutjaStrategy implements JungjaStrategy {
     @Override
     public BrailleToken uncontracted(Geul geul) {
         return new BrailleToken(
-            String.valueOf(Sutja.fromChar(geul.getChar()).getBraille()),
+            Sutja.fromChar(geul.getChar()).getBraille(),
             TokenType.SUTJA,
             geul,
             false);

@@ -18,7 +18,7 @@ public class HangeulStrategy implements JungjaStrategy {
         
         if (hanGeul.getDoensori() != '\0') result.append(DoensoriTranscription.getBraille(hanGeul.getDoensori()));
         result.append(ChoseongTranscription.getBraille(hanGeul.getChoseong()));
-        result.append(JungseongTranscription.getBraille(hanGeul.getJungseong()));
+        result.append(JungseongTranscription.getBraille(hanGeul.getJungseong() + ""));
         if (hanGeul.getJongseong() != '\0') result.append(JongseongTranscription.getBraille(hanGeul.getJongseong()));
         if (hanGeul.getGyeopbatchim() != '\0') result.append(JongseongTranscription.getBraille(hanGeul.getGyeopbatchim()));
         

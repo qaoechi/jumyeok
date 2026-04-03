@@ -9,40 +9,40 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum SoMunja {
-    a('⠁'),
-    b('⠃'),
-    c('⠉'),
-    d('⠙'),
-    e('⠑'),
-    f('⠋'),
-    g('⠛'),
-    h('⠓'),
-    i('⠊'),
-    j('⠚'),
-    k('⠅'),
-    l('⠇'),
-    m('⠍'),
-    n('⠝'),
-    o('⠕'),
-    p('⠏'),
-    q('⠟'),
-    r('⠗'),
-    s('⠎'),
-    t('⠞'),
-    u('⠥'),
-    v('⠧'),
-    w('⠺'),
-    x('⠭'),
-    y('⠽'),
-    z('⠵');
+public enum SoMunJa {
+    a("⠁"),
+    b("⠃"),
+    c("⠉"),
+    d("⠙"),
+    e("⠑"),
+    f("⠋"),
+    g("⠛"),
+    h("⠓"),
+    i("⠊"),
+    j("⠚"),
+    k("⠅"),
+    l("⠇"),
+    m("⠍"),
+    n("⠝"),
+    o("⠕"),
+    p("⠏"),
+    q("⠟"),
+    r("⠗"),
+    s("⠎"),
+    t("⠞"),
+    u("⠥"),
+    v("⠧"),
+    w("⠺"),
+    x("⠭"),
+    y("⠽"),
+    z("⠵");
 
-    private final char braille;
-    private static final Map<Character, SoMunja> MAP =
+    private final String braille;
+    private static final Map<String, SoMunJa> MAP =
         Arrays.stream(values())
-            .collect((Collectors.toMap(s -> s.name().charAt(0), s -> s)));
+            .collect((Collectors.toMap(s -> s.name(), s -> s)));
 
-    public static SoMunja fromChar(char a) {
+    public static SoMunJa fromChar(String a) {
         return MAP.get(a);
     }
 }

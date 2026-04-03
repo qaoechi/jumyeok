@@ -12,34 +12,46 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.junyeok.model.Buho;
-import com.junyeok.model.DeaMunJa;
-import com.junyeok.model.Geul;
-import com.junyeok.model.GongBaek;
-import com.junyeok.model.HanGeul;
-import com.junyeok.model.SoMunJa;
-import com.junyeok.model.SutJa;
 import com.junyeok.model.braille.BrailleToken;
-import com.junyeok.model.braille.TokenType;
-import com.junyeok.service.jungja.BuHoStrategy;
-import com.junyeok.service.jungja.DeaMunJaStrategy;
-import com.junyeok.service.jungja.GongBaekStrategy;
-import com.junyeok.service.jungja.HanGeulStrategy;
-import com.junyeok.service.jungja.JungJaStrategy;
-import com.junyeok.service.jungja.SoMunJaStrategy;
-import com.junyeok.service.jungja.SutJaStrategy;
+import com.junyeok.model.mukja.Buho;
+import com.junyeok.model.mukja.DeaMunja;
+import com.junyeok.model.mukja.Geul;
+import com.junyeok.model.mukja.Gongbaek;
+import com.junyeok.model.mukja.Hangeul;
+import com.junyeok.model.mukja.SoMunja;
+import com.junyeok.model.mukja.Sutja;
+import com.junyeok.service.jungja.BuhoStrategy;
+import com.junyeok.service.jungja.DeaMunjaStrategy;
+import com.junyeok.service.jungja.GongbaekStrategy;
+import com.junyeok.service.jungja.HangeulStrategy;
+import com.junyeok.service.jungja.JungjaStrategy;
+import com.junyeok.service.jungja.SoMunjaStrategy;
+import com.junyeok.service.jungja.SutjaStrategy;
 import com.junyeok.service.tokenize.GeulTypeResolver;
-import com.junyeok.service.yakja.HanGeulYakJa;
+import com.junyeok.service.yakja.BuhoYakja;
+import com.junyeok.service.yakja.GongbaekYakja;
+import com.junyeok.service.yakja.HangeulYakja;
+import com.junyeok.service.yakja.SutjaYakja;
+import com.junyeok.service.yakja.YakjaStrategy;
+import com.junyeok.service.yakja.YeongeoYakja;
 
 public class Main {
     public static void main(String[] args) {
-        Map<Class<? extends Geul>, JungJaStrategy> startegies = Map.of(
-            HanGeul.class, new HanGeulStrategy(),
-            SutJa.class, new SutJaStrategy(),
-            GongBaek.class, new GongBaekStrategy(),
-            SoMunJa.class, new SoMunJaStrategy(),
-            DeaMunJa.class, new DeaMunJaStrategy(),
-            Buho.class, new BuHoStrategy()
+        Map<Class<? extends Geul>, JungjaStrategy> jungjaMapper = Map.of(
+            Hangeul.class, new HangeulStrategy(),
+            Sutja.class, new SutjaStrategy(),
+            Gongbaek.class, new GongbaekStrategy(),
+            SoMunja.class, new SoMunjaStrategy(),
+            DeaMunja.class, new DeaMunjaStrategy(),
+            Buho.class, new BuhoStrategy()
+        );
+        Map<Class<? extends Geul>, YakjaStrategy> yakjaMapper = Map.of(
+            Hangeul.class, new HangeulYakja(),
+            SoMunja.class, new YeongeoYakja(),
+            DeaMunja.class, new YeongeoYakja(),
+            Sutja.class, new SutjaYakja(),
+            Buho.class, new BuhoYakja(),
+            Gongbaek.class, new GongbaekYakja()
         );
 
         List<String> input = new ArrayList<>();
@@ -47,22 +59,27 @@ public class Main {
         input.add("가 나 라 사 방 까 싺\n");
         input.add("았 갔 쩠\n");
         input.add("엷 옥 늘 쑬\n");
-        input.add("영엉 성정쩡청썽 경겅");
-        // input.add("아아-1\n2");
+        input.add("영엉 성정쩡청썽 경겅\n");
+        input.add("aA sd-1\n2");
         
         List<Geul> result = input.stream()
             .flatMap(in -> in.chars().mapToObj(c -> (char) c))
             .map(c -> GeulTypeResolver.resolve(c).create(c))
             .toList();
 
-        String output = result.stream()
+        List<BrailleToken> jungja = result.stream()
             .map(geul -> {
-                return startegies.get(geul.getClass()).uncontracted(geul);
-            })
+                return jungjaMapper.get(geul.getClass()).uncontracted(geul);
+            }).toList();
+        List<BrailleToken> yakja = result.stream()
             .map(geul -> {
-                if (geul.getType() == TokenType.HANGEUL) return HanGeulYakJa.contraction(geul); 
-                return geul;
-            })
+                return yakjaMapper.get(geul.getClass()).contraction(geul);
+            }).toList();
+
+        String output = 
+            jungja
+            // yakja
+            .stream()
             .map(BrailleToken::toString)
             .map(s -> s.replace("\0", ""))
             .collect(Collectors.joining());
