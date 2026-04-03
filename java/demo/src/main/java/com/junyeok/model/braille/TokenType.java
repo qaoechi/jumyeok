@@ -2,8 +2,7 @@ package com.junyeok.model.braille;
 
 public enum TokenType {
     HANGEUL,
-    SOMUNJA,
-    DEAMUNJA,
+    YEONGEO,
     SUTJA,
     GONGBAEK,
     BUHO

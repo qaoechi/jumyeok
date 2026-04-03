@@ -14,18 +14,16 @@ import java.util.stream.Collectors;
 
 import com.junyeok.model.braille.BrailleToken;
 import com.junyeok.model.mukja.Buho;
-import com.junyeok.model.mukja.DeaMunja;
 import com.junyeok.model.mukja.Geul;
 import com.junyeok.model.mukja.Gongbaek;
 import com.junyeok.model.mukja.Hangeul;
-import com.junyeok.model.mukja.SoMunja;
+import com.junyeok.model.mukja.Yeongeo;
 import com.junyeok.model.mukja.Sutja;
 import com.junyeok.service.jungja.BuhoStrategy;
-import com.junyeok.service.jungja.DeaMunjaStrategy;
 import com.junyeok.service.jungja.GongbaekStrategy;
 import com.junyeok.service.jungja.HangeulStrategy;
 import com.junyeok.service.jungja.JungjaStrategy;
-import com.junyeok.service.jungja.SoMunjaStrategy;
+import com.junyeok.service.jungja.YeongeoStrategy;
 import com.junyeok.service.jungja.SutjaStrategy;
 import com.junyeok.service.tokenize.GeulTypeResolver;
 import com.junyeok.service.yakja.BuhoYakja;
@@ -41,14 +39,12 @@ public class Main {
             Hangeul.class, new HangeulStrategy(),
             Sutja.class, new SutjaStrategy(),
             Gongbaek.class, new GongbaekStrategy(),
-            SoMunja.class, new SoMunjaStrategy(),
-            DeaMunja.class, new DeaMunjaStrategy(),
+            Yeongeo.class, new YeongeoStrategy(),
             Buho.class, new BuhoStrategy()
         );
         Map<Class<? extends Geul>, YakjaStrategy> yakjaMapper = Map.of(
             Hangeul.class, new HangeulYakja(),
-            SoMunja.class, new YeongeoYakja(),
-            DeaMunja.class, new YeongeoYakja(),
+            Yeongeo.class, new YeongeoYakja(),
             Sutja.class, new SutjaYakja(),
             Buho.class, new BuhoYakja(),
             Gongbaek.class, new GongbaekYakja()
@@ -70,15 +66,16 @@ public class Main {
         List<BrailleToken> jungja = result.stream()
             .map(geul -> {
                 return jungjaMapper.get(geul.getClass()).uncontracted(geul);
-            }).toList();
+            })
+            .toList();
         List<BrailleToken> yakja = result.stream()
             .map(geul -> {
                 return yakjaMapper.get(geul.getClass()).contraction(geul);
             }).toList();
 
         String output = 
-            jungja
-            // yakja
+            // jungja
+            yakja
             .stream()
             .map(BrailleToken::toString)
             .map(s -> s.replace("\0", ""))

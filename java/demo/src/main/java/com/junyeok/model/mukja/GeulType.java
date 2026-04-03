@@ -9,8 +9,7 @@ import com.junyeok.service.tokenize.HanGeulBunHae;
 @AllArgsConstructor
 public enum GeulType {
     HANGEUL(c -> HanGeulBunHae.splitGyeop(HanGeulBunHae.bunhae(c))),
-    SOMUNJA(c -> new SoMunja(c)),
-    DEAMUNJA(c -> new DeaMunja(c)),
+    YEONGEO(c -> new Yeongeo(c)),
     SUTJA(c -> new Sutja(c)),
     Buho(c -> new Buho(c)),
     GONGBAEK(c -> new Gongbaek(c));
