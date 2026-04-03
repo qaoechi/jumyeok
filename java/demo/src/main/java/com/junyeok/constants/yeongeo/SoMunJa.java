@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum SoMunJa {
+public enum SoMunja {
     a('⠁'),
     b('⠃'),
     c('⠉'),
@@ -38,11 +38,11 @@ public enum SoMunJa {
     z('⠵');
 
     private final char braille;
-    private static final Map<Character, SoMunJa> MAP =
+    private static final Map<Character, SoMunja> MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.name().charAt(0), s -> s)));
 
-    public static SoMunJa fromChar(char a) {
+    public static SoMunja fromChar(char a) {
         return MAP.get(a);
     }
 }

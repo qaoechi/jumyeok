@@ -1,10 +1,10 @@
 package com.junyeok.service.jungja;
 
-import com.junyeok.model.Geul;
 import com.junyeok.model.braille.BrailleToken;
 import com.junyeok.model.braille.TokenType;
+import com.junyeok.model.mukja.Geul;
 
-public class GongBaekStrategy implements JungJaStrategy {
+public class GongbaekStrategy implements JungjaStrategy {
 
     @Override
     public BrailleToken uncontracted(Geul geul) {

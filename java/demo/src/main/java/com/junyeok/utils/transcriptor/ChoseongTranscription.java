@@ -1,9 +1,9 @@
 package com.junyeok.utils.transcriptor;
 
-import com.junyeok.constants.hangeulJumja.ChoSeong;
+import com.junyeok.constants.hangeul.jumja.Choseong;
 
 public final class ChoseongTranscription {
-    public static char getChoseongBraille(char c) {
-        return ChoSeong.fromChar(c) != null ? ChoSeong.fromChar(c).getChoseong() : c;
+    public static char getBraille(char c) {
+        return Choseong.fromChar(c) != null ? Choseong.fromChar(c).getBraille() : c;
     }
 }

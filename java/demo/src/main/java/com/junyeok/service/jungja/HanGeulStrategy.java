@@ -1,26 +1,26 @@
 package com.junyeok.service.jungja;
 
-import com.junyeok.constants.hangeulJumja.ChoSeong;
-import com.junyeok.constants.hangeulJumja.DoenSoRi;
-import com.junyeok.constants.hangeulJumja.JongSeong;
-import com.junyeok.constants.hangeulJumja.JungSeong;
-import com.junyeok.model.Geul;
-import com.junyeok.model.HanGeul;
 import com.junyeok.model.braille.BrailleToken;
 import com.junyeok.model.braille.TokenType;
+import com.junyeok.model.mukja.Geul;
+import com.junyeok.model.mukja.Hangeul;
+import com.junyeok.utils.transcriptor.ChoseongTranscription;
+import com.junyeok.utils.transcriptor.DoensoriTranscription;
+import com.junyeok.utils.transcriptor.JongseongTranscription;
+import com.junyeok.utils.transcriptor.JungseongTranscription;
 
-public class HanGeulStrategy implements JungJaStrategy {
+public class HangeulStrategy implements JungjaStrategy {
 
     @Override
     public BrailleToken uncontracted(Geul geul) {
         StringBuilder result = new StringBuilder();
-        HanGeul hanGeul = (HanGeul)geul;
+        Hangeul hanGeul = (Hangeul)geul;
         
-        if (hanGeul.getDoensori() != '\0') result.append(DoenSoRi.쌍.getDoen());
-        result.append(ChoSeong.fromChar(hanGeul.getChoseong()).getChoseong());
-        result.append(JungSeong.fromChar(hanGeul.getJungseong()).getJungseong());
-        if (hanGeul.getJongseong() != '\0') result.append(JongSeong.fromChar(hanGeul.getJongseong()).getJongseong());
-        if (hanGeul.getGyeopbatchim() != '\0') result.append(JongSeong.fromChar(hanGeul.getGyeopbatchim()).getJongseong());
+        if (hanGeul.getDoensori() != '\0') result.append(DoensoriTranscription.getBraille(hanGeul.getDoensori()));
+        result.append(ChoseongTranscription.getBraille(hanGeul.getChoseong()));
+        result.append(JungseongTranscription.getBraille(hanGeul.getJungseong()));
+        if (hanGeul.getJongseong() != '\0') result.append(JongseongTranscription.getBraille(hanGeul.getJongseong()));
+        if (hanGeul.getGyeopbatchim() != '\0') result.append(JongseongTranscription.getBraille(hanGeul.getGyeopbatchim()));
         
         return new BrailleToken(result.toString(), TokenType.HANGEUL, geul, false);
     }

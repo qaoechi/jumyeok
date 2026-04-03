@@ -1,16 +1,16 @@
 package com.junyeok.service.jungja;
 
-import com.junyeok.constants.otherBraille.SutJa;
-import com.junyeok.model.Geul;
+import com.junyeok.constants.other.Sutja;
 import com.junyeok.model.braille.BrailleToken;
 import com.junyeok.model.braille.TokenType;
+import com.junyeok.model.mukja.Geul;
 
-public class SutJaStrategy implements JungJaStrategy {
+public class SutjaStrategy implements JungjaStrategy {
 
     @Override
     public BrailleToken uncontracted(Geul geul) {
         return new BrailleToken(
-            String.valueOf(SutJa.fromChar(geul.getChar()).getBraille()),
+            String.valueOf(Sutja.fromChar(geul.getChar()).getBraille()),
             TokenType.SUTJA,
             geul,
             false);
