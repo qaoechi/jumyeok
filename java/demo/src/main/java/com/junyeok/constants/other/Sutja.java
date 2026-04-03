@@ -1,4 +1,4 @@
-package com.junyeok.constants.otherBraille;
+package com.junyeok.constants.other;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum SutJa {
+public enum Sutja {
     일('1', '⠁'),
     이('2', '⠃'),
     삼('3', '⠉'),
@@ -23,11 +23,11 @@ public enum SutJa {
 
     private final char number;
     private final char braille;
-    private static final Map<Character, SutJa> num =
+    private static final Map<Character, Sutja> MAP =
         Arrays.stream(values())
-            .collect((Collectors.toMap(SutJa::getNumber, s -> s)));
+            .collect((Collectors.toMap(Sutja::getNumber, s -> s)));
 
-    public static SutJa fromChar(char a) {
-        return num.get(a);
+    public static Sutja fromChar(char a) {
+        return MAP.get(a);
     }
 }

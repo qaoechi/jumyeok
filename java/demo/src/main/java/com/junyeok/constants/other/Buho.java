@@ -1,4 +1,4 @@
-package com.junyeok.constants.otherBraille;
+package com.junyeok.constants.other;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum BuHo {
+public enum Buho {
     붙임표('-', "⠤"),
     우측화살표('→', "⠒⠕"),
     좌측화살표('←', "⠪⠒"),
@@ -17,11 +17,11 @@ public enum BuHo {
 
     private final char symbol;
     private final String braille;
-    private static final Map<Character, BuHo> munja =
+    private static final Map<Character, Buho> MAP =
         Arrays.stream(values())
-            .collect((Collectors.toMap(BuHo::getSymbol, s -> s)));
+            .collect((Collectors.toMap(Buho::getSymbol, s -> s)));
 
-    public static BuHo fromChar(char a) {
-        return munja.get(a);
+    public static Buho fromChar(char a) {
+        return MAP.get(a);
     }
 }

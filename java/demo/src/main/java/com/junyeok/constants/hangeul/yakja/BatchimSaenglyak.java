@@ -1,4 +1,4 @@
-package com.junyeok.constants.yakja;
+package com.junyeok.constants.hangeul.yakja;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum BatChimSaengLyak {
+public enum BatchimSaenglyak {
     억("ㅓㄱ", '⠹'),
     언("ㅓㄴ", '⠾'),
     얼("ㅓㄹ", '⠞'),
@@ -26,12 +26,12 @@ public enum BatChimSaengLyak {
     인("ㅣㄴ", '⠟');
 
     private final String key;
-    private final char batChimSaengLyak;
-    private static final Map<String, BatChimSaengLyak> BATCHIMSAENGLYAK_MAP =
+    private final char braille;
+    private static final Map<String, BatchimSaenglyak> MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.key, s -> s)));
 
-    public static BatChimSaengLyak fromChar(String key) {
-        return BATCHIMSAENGLYAK_MAP.get(key);
+    public static BatchimSaenglyak fromChar(String key) {
+        return MAP.get(key);
     }
 }

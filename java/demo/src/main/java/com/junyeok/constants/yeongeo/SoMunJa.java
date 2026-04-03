@@ -1,4 +1,4 @@
-package com.junyeok.constants.otherBraille;
+package com.junyeok.constants.yeongeo;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -38,11 +38,11 @@ public enum SoMunJa {
     z('⠵');
 
     private final char braille;
-    private static final Map<Character, SoMunJa> alphabet =
+    private static final Map<Character, SoMunJa> MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.name().charAt(0), s -> s)));
 
     public static SoMunJa fromChar(char a) {
-        return alphabet.get(a);
+        return MAP.get(a);
     }
 }

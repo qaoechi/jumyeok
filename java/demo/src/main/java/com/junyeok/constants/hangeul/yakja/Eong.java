@@ -1,4 +1,4 @@
-package com.junyeok.constants.yakja;
+package com.junyeok.constants.hangeul.yakja;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -16,11 +16,11 @@ public enum Eong {
 
     private final char choseong;
     private final char braille;
-    private static final Map<Character, Eong> EONG_MAP =
+    private static final Map<Character, Eong> MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.choseong, s -> s)));
 
     public static Eong fromChar(char choseong) {
-        return EONG_MAP.get(choseong);
+        return MAP.get(choseong);
     }
 }

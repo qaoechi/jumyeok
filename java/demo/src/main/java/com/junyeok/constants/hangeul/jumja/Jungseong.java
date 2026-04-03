@@ -1,4 +1,4 @@
-package com.junyeok.constants.hangeulJumja;
+package com.junyeok.constants.hangeul.jumja;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum JungSeong {
+public enum Jungseong {
     ㅏ('ㅏ', "⠣"),
     ㅐ('ㅐ', "⠗"),
     ㅑ('ㅑ', "⠜"),
@@ -33,12 +33,12 @@ public enum JungSeong {
     ㅣ('ㅣ', "⠕");
 
     private final char origin;
-    private final String jungseong;
-    private static final Map<Character, JungSeong> JUNGSEONG_MAP =
+    private final String braille;
+    private static final Map<Character, Jungseong> MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.origin, s -> s)));
 
-    public static JungSeong fromChar(char jungseong) {
-        return JUNGSEONG_MAP.get(jungseong);
+    public static Jungseong fromChar(char jungseong) {
+        return MAP.get(jungseong);
     }
 }

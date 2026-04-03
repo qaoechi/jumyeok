@@ -1,4 +1,4 @@
-package com.junyeok.constants.yakja;
+package com.junyeok.constants.hangeul.yakja;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum Geot {
-    것("⠸⠎");
+    약자("⠸⠎");
 
-    private final String thing;
+    private final String braille;
 }

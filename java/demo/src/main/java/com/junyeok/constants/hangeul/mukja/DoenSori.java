@@ -1,4 +1,4 @@
-package com.junyeok.constants.hangeul;
+package com.junyeok.constants.hangeul.mukja;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum SsangJaEum {
+public enum DoenSori {
     ㄲ('ㄲ', 'ㄱ'),
     ㄸ('ㄸ', 'ㄷ'),
     ㅃ('ㅃ', 'ㅂ'),
@@ -18,11 +18,11 @@ public enum SsangJaEum {
 
     private final char origin;
     private final char jaeum;
-    private static final Map<Character, SsangJaEum> GYEOP_MAP =
+    private static final Map<Character, DoenSori> MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.origin, s -> s)));
 
-    public static SsangJaEum fromChar(char jaeum) {
-        return GYEOP_MAP.get(jaeum);
+    public static DoenSori fromChar(char jaeum) {
+        return MAP.get(jaeum);
     }
 }

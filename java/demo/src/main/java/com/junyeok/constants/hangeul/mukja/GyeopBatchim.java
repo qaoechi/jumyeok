@@ -1,4 +1,4 @@
-package com.junyeok.constants.hangeul;
+package com.junyeok.constants.hangeul.mukja;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum GyeopBatChim {
+public enum GyeopBatchim {
     ㄲ('ㄲ', 'ㄱ', 'ㄱ'),
     ㄳ('ㄳ', 'ㄱ', 'ㅅ'),
     ㄵ('ㄵ', 'ㄴ', 'ㅈ'),
@@ -28,11 +28,11 @@ public enum GyeopBatChim {
     private final char first;
     private final char second;
     
-    private static final Map<Character, GyeopBatChim> GYEOP_MAP =
+    private static final Map<Character, GyeopBatchim> MAP =
         Arrays.stream(values())
             .collect((Collectors.toMap(s -> s.origin, s -> s)));
 
-    public static GyeopBatChim fromChar(char batchim) {
-        return GYEOP_MAP.get(batchim);
+    public static GyeopBatchim fromChar(char batchim) {
+        return MAP.get(batchim);
     }
 }
