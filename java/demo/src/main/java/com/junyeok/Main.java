@@ -24,6 +24,7 @@ import com.junyeok.service.jungja.GongbaekStrategy;
 import com.junyeok.service.jungja.HangeulStrategy;
 import com.junyeok.service.jungja.JungjaStrategy;
 import com.junyeok.service.jungja.YeongeoStrategy;
+import com.junyeok.service.service.RuleEngine;
 import com.junyeok.service.jungja.SutjaStrategy;
 import com.junyeok.service.tokenize.GeulTypeResolver;
 import com.junyeok.service.yakja.BuhoYakja;
@@ -51,12 +52,7 @@ public class Main {
         );
 
         List<String> input = new ArrayList<>();
-        input.add("아 그 냥 쫌 빍 쮋\n");
-        input.add("가 나 라 사 방 까 싺\n");
-        input.add("았 갔 쩠\n");
-        input.add("엷 옥 늘 쑬\n");
-        input.add("영엉 성정쩡청썽 경겅\n");
-        input.add("aA sd-1\n2");
+        input.add("");
         
         List<Geul> result = input.stream()
             .flatMap(in -> in.chars().mapToObj(c -> (char) c))
@@ -72,10 +68,10 @@ public class Main {
             .map(geul -> {
                 return yakjaMapper.get(geul.getClass()).contraction(geul);
             }).toList();
-
+        List<BrailleToken> rule = RuleEngine.process(yakja);
         String output = 
             // jungja
-            yakja
+            rule
             .stream()
             .map(BrailleToken::toString)
             .map(s -> s.replace("\0", ""))
