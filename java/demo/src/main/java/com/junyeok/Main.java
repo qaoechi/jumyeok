@@ -24,7 +24,7 @@ import com.junyeok.service.jungja.GongbaekStrategy;
 import com.junyeok.service.jungja.HangeulStrategy;
 import com.junyeok.service.jungja.JungjaStrategy;
 import com.junyeok.service.jungja.YeongeoStrategy;
-import com.junyeok.service.service.RuleEngine;
+import com.junyeok.service.rule.RuleEngine;
 import com.junyeok.service.jungja.SutjaStrategy;
 import com.junyeok.service.tokenize.GeulTypeResolver;
 import com.junyeok.service.yakja.BuhoYakja;
@@ -53,7 +53,7 @@ public class Main {
 
         List<String> input = new ArrayList<>();
         input.add("");
-        
+
         List<Geul> result = input.stream()
             .flatMap(in -> in.chars().mapToObj(c -> (char) c))
             .map(c -> GeulTypeResolver.resolve(c).create(c))

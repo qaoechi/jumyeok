@@ -1,4 +1,4 @@
-package com.junyeok.service.service;
+package com.junyeok.service.rule;
 
 import java.util.List;
 
