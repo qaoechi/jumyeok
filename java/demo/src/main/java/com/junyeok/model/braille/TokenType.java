@@ -5,5 +5,6 @@ public enum TokenType {
     YEONGEO,
     SUTJA,
     GONGBAEK,
-    BUHO
+    BUHO,
+    HELPER
 }
