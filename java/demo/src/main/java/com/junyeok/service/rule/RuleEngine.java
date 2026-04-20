@@ -4,36 +4,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.junyeok.model.braille.BrailleToken;
+import com.junyeok.model.braille.Segment;
 import com.junyeok.model.braille.TokenType;
 
 public class RuleEngine {
     public static List<BrailleToken> process(List<BrailleToken> input) {
-        List<BrailleToken> result = new ArrayList<>();
-        List<BrailleToken> buffer = new ArrayList<>();
+        if (input.isEmpty()) return null;
 
         TokenType type = input.get(0).getType();
+        List<BrailleToken> buffer = new ArrayList<>();
+        List<Segment> segments = new ArrayList<>();
 
-        for (BrailleToken b : input) {
-            if (b.getType() == type) {
-                buffer.add(b);
+        for (BrailleToken token : input) {
+            if (token.getType() == type) {
+                buffer.add(token);
             } else {
-                flush(buffer, result);
+                segments.add(flush(buffer));
                 buffer.clear();
-                buffer.add(b);
-                type = b.getType();
+                type = token.getType();
+                buffer.add(token);
             }
         }
-        flush(buffer, result);
+        segments.add(flush(buffer));
+
+        List<BrailleToken> result = new ArrayList<>();
+        for (Segment segment : segments) {
+            result.addAll(segment.getTokens());
+        }
+
         return result;
     }
-
-    private static void flush(List<BrailleToken> buffer, List<BrailleToken> result) {
+    private static Segment flush(List<BrailleToken> buffer) {
+        List<BrailleToken> input = new ArrayList<>(buffer);
         switch (buffer.get(0).getType()) {
-            case HANGEUL -> HangeulRule.apply(buffer, result);
-            case SUTJA -> SutjaRule.apply(buffer, result);
-            case YEONGEO -> YeongeoRule.apply(buffer, result);
-            case BUHO -> BuhoRule.apply(buffer, result);
-            default -> result.addAll(buffer);
+            case HANGEUL:
+                return HangeulRule.apply(input);
+            case SUTJA:
+                return SutjaRule.apply(input);
+            case YEONGEO:
+                return YeongeoRule.apply(input);
+            case BUHO:
+                return BuhoRule.apply(input);
+            default:
+                return new Segment(TokenType.GONGBAEK, input);
         }
     }
 }

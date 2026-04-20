@@ -1,17 +1,20 @@
 package com.junyeok.service.rule;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.junyeok.constants.onlyBraille.BrailleHelper;
 import com.junyeok.constants.onlyBraille.CancelSaenglyak;
 import com.junyeok.constants.onlyBraille.JungseongAE;
 import com.junyeok.model.braille.BrailleToken;
+import com.junyeok.model.braille.Segment;
 import com.junyeok.model.braille.TokenType;
 import com.junyeok.model.mukja.Hangeul;
 import com.junyeok.service.jungja.HangeulStrategy;
 
 public class HangeulRule {
-    public static void apply(List<BrailleToken> buffer, List<BrailleToken> result) {
+    public static Segment apply(List<BrailleToken> buffer) {
+        List<BrailleToken> result = new ArrayList<>();
         for (int i = 0; i < buffer.size() - 1; i++) {
             Hangeul next = (Hangeul)buffer.get(i + 1).getOrigin();
             boolean flag = false;
@@ -42,5 +45,6 @@ public class HangeulRule {
             }
         }
         result.add(buffer.getLast());
+        return new Segment(TokenType.HANGEUL, result);
     }
 }
