@@ -12,8 +12,9 @@ import com.junyeok.model.braille.TokenType;
 import com.junyeok.model.mukja.Hangeul;
 import com.junyeok.service.jungja.HangeulStrategy;
 
-public class HangeulRule {
-    public static Segment apply(List<BrailleToken> buffer) {
+public class HangeulNormalizer implements Normalizer {
+    @Override
+    public Segment apply(List<BrailleToken> buffer) {
         List<BrailleToken> result = new ArrayList<>();
         for (int i = 0; i < buffer.size() - 1; i++) {
             Hangeul next = (Hangeul)buffer.get(i + 1).getOrigin();

@@ -8,8 +8,9 @@ import com.junyeok.model.braille.BrailleToken;
 import com.junyeok.model.braille.Segment;
 import com.junyeok.model.braille.TokenType;
 
-public class SutjaRule {
-    public static Segment apply(List<BrailleToken> buffer) {
+public class SutjaNormalizer implements Normalizer {
+    @Override
+    public Segment apply(List<BrailleToken> buffer) {
         List<BrailleToken> result = new ArrayList<>();
         result.add(new BrailleToken(BrailleHelper.SUPYO, TokenType.HELPER, null, false));
         result.addAll(buffer);

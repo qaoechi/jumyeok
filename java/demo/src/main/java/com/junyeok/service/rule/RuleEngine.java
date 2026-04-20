@@ -2,13 +2,22 @@ package com.junyeok.service.rule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.junyeok.model.braille.BrailleToken;
 import com.junyeok.model.braille.Segment;
 import com.junyeok.model.braille.TokenType;
 
 public class RuleEngine {
-    public static List<BrailleToken> process(List<BrailleToken> input) {
+    private Map<TokenType, Normalizer> normalizer = Map.of(
+        TokenType.HANGEUL, new HangeulNormalizer(),
+        TokenType.YEONGEO, new YeongeoNormalizer(),
+        TokenType.SUTJA, new SutjaNormalizer(),
+        TokenType.BUHO, new BuhoNormalizer(),
+        TokenType.GONGBAEK, new GongbeakNormalizer()
+    );
+
+    public List<BrailleToken> process(List<BrailleToken> input) {
         if (input.isEmpty()) return null;
 
         TokenType type = input.get(0).getType();
@@ -19,13 +28,13 @@ public class RuleEngine {
             if (token.getType() == type) {
                 buffer.add(token);
             } else {
-                segments.add(flush(buffer));
+                segments.add(normalizer.get(type).apply(new ArrayList<>(buffer)));
                 buffer.clear();
                 type = token.getType();
                 buffer.add(token);
             }
         }
-        segments.add(flush(buffer));
+        segments.add(normalizer.get(type).apply(buffer));
 
         List<BrailleToken> result = new ArrayList<>();
         for (Segment segment : segments) {
@@ -33,20 +42,5 @@ public class RuleEngine {
         }
 
         return result;
-    }
-    private static Segment flush(List<BrailleToken> buffer) {
-        List<BrailleToken> input = new ArrayList<>(buffer);
-        switch (buffer.get(0).getType()) {
-            case HANGEUL:
-                return HangeulRule.apply(input);
-            case SUTJA:
-                return SutjaRule.apply(input);
-            case YEONGEO:
-                return YeongeoRule.apply(input);
-            case BUHO:
-                return BuhoRule.apply(input);
-            default:
-                return new Segment(TokenType.GONGBAEK, input);
-        }
     }
 }

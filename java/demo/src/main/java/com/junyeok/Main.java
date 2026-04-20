@@ -50,6 +50,7 @@ public class Main {
             Buho.class, new BuhoYakja(),
             Gongbaek.class, new GongbaekYakja()
         );
+        RuleEngine engine = new RuleEngine();
 
         List<String> input = new ArrayList<>();
         input.add("혜당207 이공칠 학생쉼터→ 혜당207 이공칠 학생쉼터");
@@ -79,7 +80,7 @@ public class Main {
             .map(geul -> {
                 return yakjaMapper.get(geul.getClass()).contraction(geul);
             }).toList();
-        List<BrailleToken> rule = RuleEngine.process(yakja);
+        List<BrailleToken> rule = engine.process(yakja);
         String output = 
             // jungja
             rule
