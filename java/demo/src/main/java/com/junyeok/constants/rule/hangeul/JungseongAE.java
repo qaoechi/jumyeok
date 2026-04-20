@@ -1,4 +1,4 @@
-package com.junyeok.constants.onlyBraille;
+package com.junyeok.constants.rule.hangeul;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

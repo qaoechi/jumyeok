@@ -1,4 +1,4 @@
-package com.junyeok.constants.onlyBraille;
+package com.junyeok.constants.rule;
 
 public class BrailleHelper {
     public static final String GUBUNPYO = "⠤";
