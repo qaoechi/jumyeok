@@ -52,12 +52,23 @@ public class Main {
         );
 
         List<String> input = new ArrayList<>();
-        input.add("");
-
+        input.add("혜당207 이공칠 학생쉼터→ 혜당207 이공칠 학생쉼터");
+        input.add("마음이 라음 녜 났 나예 와앤 와인");
         List<Geul> result = input.stream()
-            .flatMap(in -> in.chars().mapToObj(c -> (char) c))
+            .flatMap(in -> {
+                List<Character> chars = in.chars()
+                    .mapToObj(c -> (char) c)
+                    .collect(Collectors.toList());
+                chars.add('\n');
+                return chars.stream();
+            })
             .map(c -> GeulTypeResolver.resolve(c).create(c))
             .toList();
+
+        // String input = "asd";
+        // List<Geul> result = input.chars().mapToObj(c -> (char) c)
+        //     .map(c -> GeulTypeResolver.resolve(c).create(c))
+        //     .toList();
 
         List<BrailleToken> jungja = result.stream()
             .map(geul -> {
