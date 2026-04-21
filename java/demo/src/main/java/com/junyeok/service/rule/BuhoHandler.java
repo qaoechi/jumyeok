@@ -12,7 +12,6 @@ public class BuhoHandler implements TransitionRule {
     public void handle(Segment current, Segment prev, Segment next, List<BrailleToken> result) {
         if (current.getTokens().size() == 1) {
             char buho = current.getTokens().get(0).getOrigin().getChar();
-            System.out.println(buho);
             if (buho == '→') {
                 result.add(new BrailleToken(BrailleHelper.BUTCHIMGONBAEK, TokenType.HELPER, null, false));
             }
