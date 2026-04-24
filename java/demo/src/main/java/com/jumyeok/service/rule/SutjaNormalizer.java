@@ -12,7 +12,7 @@ public class SutjaNormalizer implements Normalizer {
     @Override
     public Segment apply(List<BrailleToken> buffer) {
         List<BrailleToken> result = new ArrayList<>();
-        result.add(new BrailleToken(BrailleHelper.SUPYO, TokenType.HELPER, null, false));
+        result.add(BrailleHelper.SUPYO);
         result.addAll(buffer);
         return new Segment(TokenType.SUTJA, result);
     }
