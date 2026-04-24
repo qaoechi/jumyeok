@@ -45,7 +45,7 @@ public class HangeulNormalizer implements Normalizer {
                 result.add(buffer.get(i));
             }
         }
-        result.add(buffer.getLast());
+        result.add(buffer.get(buffer.size() - 1));
         return new Segment(TokenType.HANGEUL, result);
     }
 }
