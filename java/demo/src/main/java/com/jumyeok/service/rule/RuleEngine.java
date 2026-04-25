@@ -20,8 +20,7 @@ public class RuleEngine {
         TokenType.HANGEUL, new HangeulHandler(),
         TokenType.YEONGEO, new YeongeoHandler(),
         TokenType.SUTJA, new SutjaHandler(),
-        TokenType.BUHO, new BuhoHandler(),
-        TokenType.GONGBAEK, new BuhoHandler()
+        TokenType.BUHO, new BuhoHandler()
     );
 
     public List<BrailleToken> process(List<BrailleToken> input) {
@@ -45,11 +44,19 @@ public class RuleEngine {
 
         List<BrailleToken> result = new ArrayList<>();
         for (int i = 0; i < segments.size(); i++) {
-            Segment prev = i > 0 ? segments.get(i - 1) : null;
             Segment curr = segments.get(i);
+            if (curr.getType() == TokenType.GONGBAEK) {
+                result.add(curr.getTokens().get(0));
+                continue;
+            }
+            Segment prev = i > 0 ? segments.get(i - 1) : null;
+            if (prev != null && prev.getType() == TokenType.GONGBAEK) prev = segments.get(i - 2);
+
             Segment next = i < segments.size() - 1 ? segments.get(i + 1) : null;
+            if (next != null && next.getType() == TokenType.GONGBAEK && i + 2 < segments.size()) next = segments.get(i + 2);
+
             transition.get(curr.getType()).handle(curr, prev, next, result);
-        }
+        }   
         return result;
     }
 }
