@@ -28,7 +28,7 @@ public class HangeulNormalizer implements Normalizer {
                 
                 if (flag) {
                     result.add(buffer.get(i));
-                    result.add(new BrailleToken(BrailleHelper.GUBUNPYO, TokenType.HELPER, null, false));
+                    result.add(BrailleHelper.GUBUNPYO);
                     continue;
                 }
 
@@ -45,7 +45,7 @@ public class HangeulNormalizer implements Normalizer {
                 result.add(buffer.get(i));
             }
         }
-        result.add(buffer.getLast());
+        result.add(buffer.get(buffer.size() - 1));
         return new Segment(TokenType.HANGEUL, result);
     }
 }

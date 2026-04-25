@@ -16,7 +16,7 @@ public class HangeulHandler implements TransitionRule {
             Hangeul curr = (Hangeul)(current.getTokens().get(0).getOrigin());
             String input = curr.getChoseong() != 'ㅇ' ? curr.getChoseong() + "" : curr.getJungseong() + ""  + curr.getJongseong();
             if (ButchimGongbaek.exists(input)) {
-                result.add(new BrailleToken(BrailleHelper.BUTCHIMGONBAEK, TokenType.HELPER, null, false));
+                result.add(BrailleHelper.BUTCHIMGONBAEK);
             }
         }
         result.addAll(current.getTokens());
